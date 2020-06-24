@@ -1,3 +1,6 @@
+// LoyaltyMC's Bot
+// Made By LH4005 <3
+
 var id = ""
 
 // Varibles
