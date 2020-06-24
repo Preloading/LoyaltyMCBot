@@ -1,2 +1,7 @@
-# LoyaltyMCBot
-This is the code for the LoyaltyMC Discord Bot Ran by Logan's Bots
+<img src="loyaltymc.net/custom/templates/MineBox/img/favicon.ico">
+This is the bots script for LoyaltyMC currently written in Node JS and Discord.IO and i am working on transferring it to Eris due to the bot will stop working in October's Discord Update
+
+# Please note that you have to make auth.json with the following code (You have to modify some)
+{
+    token: "YOUR TOKEN HERE"
+}
