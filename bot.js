@@ -1,7 +1,4 @@
-// LoyaltyMC's Bot
-// Made By LH4005 <3
-
-var id = ""
+console.log("Welcome To Logan's Bots")
 
 // Varibles
 
@@ -9,6 +6,7 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 var members = ""
+var id = ""
 
 // Server ID
 var serverID = "515582535573700627"
@@ -71,8 +69,8 @@ bot.on('ready', function (evt) {
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
     playingLoop();
+    console.log("Bot Initialized")
 });
-
 bot.on('message', function (user, userID, channelID, message, evt, member) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `?`
@@ -85,6 +83,7 @@ bot.on('message', function (user, userID, channelID, message, evt, member) {
         switch(cmd) {
             // ?ping
             case 'ping':
+                console.log(user + " Ran ?ping")
                 bot.sendMessage({
                     to: channelID,
                     message: 'Pong!'
@@ -92,28 +91,23 @@ bot.on('message', function (user, userID, channelID, message, evt, member) {
             break;
             // ?ip
             case 'ip':
+                console.log(user + " Ran ?ip")
                 bot.sendMessage({
                     to: channelID,
-                    message: 'Java: `play.loyaltymc.net`'
-                });
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'Bedrock: `play.loyaltymc.net`'
-                });
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'Bedrock Port:19132'
+                    message: 'Java: `play.loyaltymc.net`\nBedrock: `play.loyaltymc.net`\nBedrock Port: `19132`'
                 });
             break;
-            // !istheserverdead
+            // ?istheserverdead
             case 'istheserverdead':
+                console.log(user + " Ran ?istheserverdead")
                 bot.sendMessage({
                     to: channelID,
                     message: 'No.'
                 });
             break;
-            // !help
+            // ?help
             case 'help':
+                console.log(user + " Ran ?help")
                 bot.sendMessage({
                     to: channelID,
                     message: 'Here\'s some commands i know...\n`?help` - The Command You Are Using Right Now\n`?ip` - The ip for the server\n`?istheserverdead` - Tells You The Answer to Is The Server Dead\n`?geysermc` - Tells You About GeyserMC\n`?website` - Tells You The Address to the website\n`?whyistheserversobuggyonbedrock` - Tells You Why The Server is so buggy on bedrock\n`?author` - Tells You The Author of this Amazing Bot'
@@ -121,6 +115,7 @@ bot.on('message', function (user, userID, channelID, message, evt, member) {
             // Just add any case commands if you want to..
             break;
             case 'mute':
+                console.log(user + " Ran ?mute")
                 if (bot.servers[serverID].members[userID].roles.includes(roleOwner) || bot.servers[serverID].members[userID].roles.includes(roleCoOwner) || bot.servers[serverID].members[userID].roles.includes(roleAdmin) || bot.servers[serverID].members[userID].roles.includes(roleMod) || bot.servers[serverID].members[userID].roles.includes(roleTraniee) || bot.servers[serverID].members[userID].roles.includes(roleManager)) {
                     id = args1.match(/(\d+)/)
                     id = id[0]
@@ -146,7 +141,35 @@ bot.on('message', function (user, userID, channelID, message, evt, member) {
                 console.log(id);
             // Just add any case commands if you want to..
             break;
+            case 'ban':
+                console.log(user + " Ran ?ban")
+                if (bot.servers[serverID].members[userID].roles.includes(roleOwner) || bot.servers[serverID].members[userID].roles.includes(roleCoOwner) || bot.servers[serverID].members[userID].roles.includes(roleAdmin) || bot.servers[serverID].members[userID].roles.includes(roleMod) || bot.servers[serverID].members[userID].roles.includes(roleTraniee) || bot.servers[serverID].members[userID].roles.includes(roleManager)) {
+                    id = args1.match(/(\d+)/)
+                    id = id[0]
+                    bot.ban({
+	                serverID: serverID,
+	                userID: id
+                    });
+                    bot.sendMessage({
+                        to: channelID,
+                        message: "You Have Banned <@!" + id + ">"
+//                        message: 'Sorry But the Ban Command is a Work In Progress :frowning:'
+                    });
+                 } else {
+                    bot.sendMessage({
+                        to: channelID,
+                        message: "You do not have perms to do ```?ban```"
+                    });
+                    bot.sendMessage({
+                        to: "526701768416165918",
+                        message: "The User <@!" + userID + "> attempted to run ?ban"
+                    });
+                  }
+                console.log(id);
+            // Just add any case commands if you want to..
+            break;
             case 'geysermc':
+                console.log(user + " Ran ?geysermc")
                 bot.sendMessage({
                     to: channelID,
                     message: 'Loyalty Uses it and so should you for your java server\nhttps://discordapp.com/invite/7ZDSKa5'
@@ -161,12 +184,14 @@ bot.on('message', function (user, userID, channelID, message, evt, member) {
             // Just add any case commands if you want to..
             break;
             case 'author':
+                console.log(user + " Ran ?author")
                 bot.sendMessage({
                     to: channelID,
                     message: 'Bot Made By @LH4005 <3'
                 });
             // Just add any case commands if you want to..
             break;
+            console.log(user + " Ran ?whyistheserversobuggyonbedrock")
             case 'whyistheserversobuggyonbedrock':
                 bot.sendMessage({
                     to: channelID,
