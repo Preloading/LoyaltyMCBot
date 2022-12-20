@@ -1,3 +1,5 @@
+NO LONGER UPDATED NOR MAINTAINED
+
 <img src="https://loyaltymc.net/custom/templates/MineBox/img/favicon.ico" height=50 width=60>
 This is the bots script for LoyaltyMC currently written in Node JS and Discord.IO and i am working on transferring it to Eris due to the bot will stop working in October's Discord Update
 
